@@ -12,10 +12,12 @@ namespace CapstoneProject.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        ListingRepos repos;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            repos = new ListingRepos();
         }
 
         public IActionResult Index()
@@ -23,7 +25,13 @@ namespace CapstoneProject.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult ListingMap()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ListingMap(double longi, double lat, int range, double minPrice, double maxPrice)
         {
             return View();
         }

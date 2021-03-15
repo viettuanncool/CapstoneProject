@@ -8,20 +8,24 @@ namespace CapstoneProject.Models
     public class ListingRepos : IListingRepos
     {
         public IQueryable<Listing> Listings => throw new NotImplementedException();
+        DbContextDao context = new();
 
         public void AddListing(Listing listing)
         {
-            throw new NotImplementedException();
+            context.Listings.Add(listing);
+            context.SaveChanges();
         }
 
         public void DeleteListing(Listing listing)
         {
-            throw new NotImplementedException();
+            context.Listings.Remove(listing);
+            context.SaveChanges();
         }
 
         public void UpdateListing(Listing listing)
         {
-            throw new NotImplementedException();
+            context.Listings.Update(listing);
+            context.SaveChanges();
         }
     }
 }

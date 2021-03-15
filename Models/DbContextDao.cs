@@ -8,6 +8,7 @@ namespace CapstoneProject.Models
 {
     public class DbContextDao : DbContext
     {
+        public DbContextDao() { }
         public DbContextDao(DbContextOptions<DbContextDao> options) : base(options) { }
         public DbSet<Listing> Listings { get; set; }
     }
