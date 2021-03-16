@@ -11,6 +11,11 @@ namespace CapstoneProject.Controllers
 {
     public class HomeController : Controller
     {
+
+        public HomeController()
+        {
+
+        }
         private readonly ILogger<HomeController> _logger;
         ListingRepos repos;
         IQueryable<Listing> listings;
@@ -74,7 +79,8 @@ namespace CapstoneProject.Controllers
             // Check length
             if (input.Length > 25)
             {
-                return false;
+                //return false;
+                throw new Exception();
             }
             else
             {
