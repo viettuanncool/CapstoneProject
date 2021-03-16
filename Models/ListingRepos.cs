@@ -7,8 +7,12 @@ namespace CapstoneProject.Models
 {
     public class ListingRepos : IListingRepos
     {
-        public IQueryable<Listing> Listings => throw new NotImplementedException();
-        DbContextDao context = new();
+        public ListingRepos()
+        {
+            context = new DbContextDao();
+        }
+        DbContextDao context;
+        public IQueryable<Listing> Listings => context.Listings;
 
         public void AddListing(Listing listing)
         {

@@ -20,6 +20,7 @@ namespace CapstoneProject.Models
         public double AnnualPropertyTaxes { get; set; }
         public Boolean BasementFinished { get; set; }
         public string Style { get; set; }
+        public double Price { get; set; }
         public string Cooling { get; set; }
         public string Heating { get; set; }
         public string ParkingStyle { get; set; }

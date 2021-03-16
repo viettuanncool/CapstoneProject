@@ -13,11 +13,13 @@ namespace CapstoneProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         ListingRepos repos;
+        IQueryable<Listing> listings;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
             repos = new ListingRepos();
+            listings = repos.Listings;
         }
 
         public IActionResult Index()
@@ -33,7 +35,9 @@ namespace CapstoneProject.Controllers
         [HttpGet]
         public IActionResult ListingMap(double minPrice, double maxPrice, string input)
         {
-            return View();
+            var checks = StringInputCheck(input) && PriceInputCheck(minPrice, maxPrice);
+            ViewBag.check = checks;
+            return View(listings.Where(x => x.Price > minPrice && x.Price < maxPrice));
         }
 
         [HttpGet]
@@ -42,8 +46,9 @@ namespace CapstoneProject.Controllers
             return View();
         }
 
-        public IActionResult ListingDetail()
+        public IActionResult ListingDetail(int id)
         {
+            //return View(listings.Where(x=>x.HouseId==id).FirstOrDefault());
             return View();
         }
 
@@ -51,6 +56,38 @@ namespace CapstoneProject.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public bool PriceInputCheck(double min, double max)
+        {
+            if (min < 0)
+            {
+                return false;
+            }
+            return min < max;
+        }
+
+        public bool StringInputCheck(string input)
+        {
+            List<string> invalidChars = new List<string>() { "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-" };
+
+            // Check length
+            if (input.Length > 25)
+            {
+                return false;
+            }
+            else
+            {
+                foreach (string s in invalidChars)
+                {
+                    if (input.Contains(s))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }

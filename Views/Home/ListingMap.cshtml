@@ -1,4 +1,5 @@
-﻿
+﻿@model IQueryable<Listing>
+
 <h3>Click on the tabs below:</h3>
 <div class="tab">
     <button class="tablinks" onclick="clickHandle(event, 'Map')" id="default">Search by Map</button>
@@ -6,7 +7,7 @@
 </div>
 <hr />
 <div id="Map" class="tabcontent">
-    <input type="text" name="input" placeholder="Please enter a place"/><br />
+    <input type="text" name="input" placeholder="Please enter a place" /><br />
     <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
             src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCQ5UXrl30P1exzOKF1U213pWKuS90xXtg&center=43.65762001850871,-79.73622917624304&zoom=18">
     </iframe>
@@ -29,25 +30,44 @@
             <option value="1">Detached</option>
             <option value="2">Attached</option>
         </select><br />
-        <input type="submit" value="Seach for Properties"/>
+        <input type="submit" value="Seach for Properties" />
     </form>
 </div>
 
 <h3>Listings</h3>
+<div style="">
+
+</div>
+@{if (Model != null)
+    {
+        if (Model.Count() != 0)
+        {
+            foreach (var x in Model)
+            {
+                <div style="border: 1px solid black; padding: 10px">
+                    <h4><b>@x.Price</b></h4>
+                    <h5>@x.StreetNumber @x.StreetName @x.Province @x.PostalCode</h5>
+                    <h6>@x.BedroomNum *bedroom-icon @x.BathroomNum *bathroom-icon</h6>
+                    <button><a asp-controller="Home" asp-action="ListingDetail" asp-route-id="@x.HouseId">Detail</a></button>
+                </div>
+                }
+            }
+        }
+    }
 <div style="display:flex">
-    <div style="border: 1 solid black">
+    <div style="border: 1px solid black; padding: 10px">
         <h4><b>Price</b></h4>
         <h5>address</h5>
         <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
         <button><a asp-controller="Home" asp-action="ListingDetail">Detail</a></button>
     </div>
-    <div style="border: 1 solid black">
+    <div style="border: 1px solid black; padding: 10px">
         <h4><b>Price</b></h4>
         <h5>address</h5>
         <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
         <button><a asp-controller="Home" asp-action="ListingDetail">Detail</a></button>
     </div>
-    <div style="border: 1 solid black">
+    <div style="border: 1px solid black; padding: 10px">
         <h4><b>Price</b></h4>
         <h5>address</h5>
         <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
