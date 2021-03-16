@@ -32,6 +32,30 @@
         <input type="submit" value="Seach for Properties"/>
     </form>
 </div>
+
+<h3>Listings</h3>
+<div style="display:flex">
+    <div style="border: 1 solid black">
+        <h4><b>Price</b></h4>
+        <h5>address</h5>
+        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
+        <button><a asp-controller="Home" asp-action="ListingDetail">Detail</a></button>
+    </div>
+    <div style="border: 1 solid black">
+        <h4><b>Price</b></h4>
+        <h5>address</h5>
+        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
+        <button><a asp-controller="Home" asp-action="ListingDetail">Detail</a></button>
+    </div>
+    <div style="border: 1 solid black">
+        <h4><b>Price</b></h4>
+        <h5>address</h5>
+        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
+        <button><a asp-controller="Home" asp-action="ListingDetail">Detail</a></button>
+    </div>
+</div>
+
+
 <script>
     document.getElementById("default").click();
 
@@ -46,20 +70,3 @@
         evt.currentTarget.className += " active";
     }
 </script>
-<div>
-    <div>
-        <h4><b>Price</b></h4>
-        <h5>address</h5>
-        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
-    </div>
-    <div>
-        <h4><b>Price</b></h4>
-        <h5>address</h5>
-        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
-    </div>
-    <div>
-        <h4><b>Price</b></h4>
-        <h5>address</h5>
-        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
-    </div>
-</div>
