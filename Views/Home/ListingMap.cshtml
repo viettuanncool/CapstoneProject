@@ -1,0 +1,65 @@
+﻿
+<h3>Click on the tabs below:</h3>
+<div class="tab">
+    <button class="tablinks" onclick="clickHandle(event, 'Map')" id="default">Search by Map</button>
+    <button class="tablinks" onclick="clickHandle(event, 'Area')">Search by Area</button>
+</div>
+<hr />
+<div id="Map" class="tabcontent">
+    <input type="text" name="input" placeholder="Please enter a place"/><br />
+    <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+            src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCQ5UXrl30P1exzOKF1U213pWKuS90xXtg&center=43.65762001850871,-79.73622917624304&zoom=18">
+    </iframe>
+</div>
+
+<div id="Area" class="tabcontent">
+    <form method="get" asp-controller="home" asp-action="ListingMap">
+        <label>Enter city, postal</label>
+        <input type="text" name="input" /><br />
+        <label>Min Price</label>
+        <input name="minPrice" type="number" />
+        <label>Max Price</label>
+        <input name="maxPrice" type="number" /><br />
+        <label>Bathrooms</label>
+        <input name="bathroom" type="number" />
+        <label>Bedrooms</label>
+        <input name="bedroom" type="number" /><br />
+        <label>Type</label>
+        <select name="houseType">
+            <option value="1">Detached</option>
+            <option value="2">Attached</option>
+        </select><br />
+        <input type="submit" value="Seach for Properties"/>
+    </form>
+</div>
+<script>
+    document.getElementById("default").click();
+
+    function clickHandle(evt, tabName) {
+        let i, tabcontent, tablinks;
+
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+<div>
+    <div>
+        <h4><b>Price</b></h4>
+        <h5>address</h5>
+        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
+    </div>
+    <div>
+        <h4><b>Price</b></h4>
+        <h5>address</h5>
+        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
+    </div>
+    <div>
+        <h4><b>Price</b></h4>
+        <h5>address</h5>
+        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
+    </div>
+</div>

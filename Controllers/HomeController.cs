@@ -25,13 +25,19 @@ namespace CapstoneProject.Controllers
             return View();
         }
 
-        public IActionResult ListingMap()
+        public IActionResult ListingMapHome()
+        {
+            return View("ListingMap");
+        }
+
+        [HttpGet]
+        public IActionResult ListingMap(double minPrice, double maxPrice, string input)
         {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult ListingMap(double longi, double lat, int range, double minPrice, double maxPrice)
+        [HttpGet]
+        public IActionResult ListingMap(double longi, double lat, int range)
         {
             return View();
         }
