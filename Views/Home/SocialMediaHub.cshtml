@@ -1,0 +1,50 @@
+﻿@model CapstoneProject.Models.PostViewModel
+
+@{
+    ViewData["Title"] = "SocialMediaHub";
+}
+
+<h1>SocialMediaHub</h1>
+
+<div>
+    <h4>MediaPost</h4>
+    <hr />
+</div>
+<div>
+    @using (Html.BeginForm("SocialMediaHub", "Home", FormMethod.Post,
+        new { enctype = "multipart/form-data" }))
+    {
+    <dl class="row">
+        <dt class="col-sm-1">
+            @Html.DisplayNameFor(model => model.TwitterActive)
+        </dt>
+        <dd class="col-sm-1">
+            @Html.CheckBoxFor(model => model.TwitterActive)
+        </dd>
+        <dt class="col-sm-1">
+            @Html.DisplayNameFor(model => model.FacebookActive)
+        </dt>
+        <dd class="col-sm-1">
+            @Html.CheckBoxFor(m => m.FacebookActive)
+        </dd>
+        <dt class="col-sm-1">
+            @Html.DisplayNameFor(model => model.InstagramActive)
+        </dt>
+        <dd class="col-sm-1">
+            @Html.CheckBoxFor(m => m.InstagramActive)
+        </dd>
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.TextAreaFor(m => m.Message, 10, 40, null)
+        </dd>
+        <dd class="col-sm-10">
+            <input type="file" size="23" />
+        </dd>
+    </dl>
+    
+    <input type="submit" value="Submit" />
+
+    }
+</div>
