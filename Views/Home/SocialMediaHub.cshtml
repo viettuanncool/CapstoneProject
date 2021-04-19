@@ -33,6 +33,9 @@
         <dd class="col-sm-1">
             @Html.CheckBoxFor(m => m.InstagramActive)
         </dd>
+        <dt class="col-sm-10" style="color : red; font-weight : bold">
+            @ViewBag.msg
+        </dt>
         <dt class="col-sm-10">
             @Html.DisplayNameFor(model => model.Message)
         </dt>
@@ -44,7 +47,17 @@
         </dd>
     </dl>
     
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Post" onclick="return submitConfirm()"/>
 
     }
 </div>
+<script>
+    function submitConfirm() {
+
+        var x = confirm("Are you sure you want to post?")
+        if (!x) {
+            return false
+        }
+        return true
+    }
+</script>

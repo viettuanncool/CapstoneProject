@@ -80,9 +80,18 @@ namespace CapstoneProject.Controllers
             {
                 s.setSocialMedia(new TwitterConnector());
 
-                if (CharacterLimitCheck(model.Message.Length))
+                if (model.Message == null)
+                {
+                    ViewBag.msg = "The message cannot be blank";
+                }
+                else if (CharacterLimitCheck(model.Message.Length))
                 {
                     s.createPost(model.Message, model.MediaBinary);
+                    ViewBag.msg = "Posted!";
+                }
+                else
+                {
+                    ViewBag.msg = "The message is over the character limit";
                 }
             }
 
@@ -98,7 +107,7 @@ namespace CapstoneProject.Controllers
                 s.createPost(model.Message, null);
             }
 
-            return RedirectToAction("SocialMediaHub");
+            return View("SocialMediaHub");
         }
 
 
@@ -110,7 +119,7 @@ namespace CapstoneProject.Controllers
 
         public bool CharacterLimitCheck(int length)
         {
-            if (length <= 280)
+            if (length > 1 && length <= 280)
             {
                 return true;
             }
