@@ -6,75 +6,72 @@
     <button class="tablinks" onclick="clickHandle(event, 'Area')">Search by Area</button>
 </div>
 <hr />
-<div id="Map" class="tabcontent">
-    <input type="text" name="input" placeholder="Please enter a place" /><br />
-    <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
-            src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCQ5UXrl30P1exzOKF1U213pWKuS90xXtg&center=43.65762001850871,-79.73622917624304&zoom=18">
-    </iframe>
-</div>
+<div style="display: flex;flex-direction:row">
+    <div style="width : 60%">
+        <div id="Map" class="tabcontent">
+            <input type="text" name="input" placeholder="Please enter a place" /><br />
+            <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+                    src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCQ5UXrl30P1exzOKF1U213pWKuS90xXtg&center=43.65762001850871,-79.73622917624304&zoom=18">
+            </iframe>
+        </div>
 
-<div id="Area" class="tabcontent">
-    <form method="get" asp-controller="home" asp-action="ListingMap">
-        <label>Enter city, postal</label>
-        <input type="text" name="input" /><br />
-        <label>Min Price</label>
-        <input name="minPrice" type="number" />
-        <label>Max Price</label>
-        <input name="maxPrice" type="number" /><br />
-        <label>Bathrooms</label>
-        <input name="bathroom" type="number" />
-        <label>Bedrooms</label>
-        <input name="bedroom" type="number" /><br />
-        <label>Type</label>
-        <select name="houseType">
-            <option value="1">Detached</option>
-            <option value="2">Attached</option>
-        </select><br />
-        <input type="submit" value="Seach for Properties" />
-    </form>
-</div>
-
-<h3>Listings</h3>
-<div style="">
-
-</div>
-@{if (Model != null)
-    {
-        if (Model.Count() != 0)
-        {
-            foreach (var x in Model)
-            {
-                <div style="border: 1px solid black; padding: 10px">
-                    <h4><b>@x.Price</b></h4>
-                    <h5>@x.StreetNumber @x.StreetName @x.Province @x.PostalCode</h5>
-                    <h6>@x.BedroomNum *bedroom-icon @x.BathroomNum *bathroom-icon</h6>
-                    <button><a asp-controller="Home" asp-action="ListingDetail" asp-route-id="@x.HouseId">Detail</a></button>
-                </div>
+        <div id="Area" class="tabcontent">
+            <form method="get" asp-controller="home" asp-action="ListingMap">
+                <label>Enter city, postal</label>
+                <input type="text" name="input" /><br />
+                <label>Min Price</label>
+                <input name="minPrice" type="number" />
+                <label>Max Price</label>
+                <input name="maxPrice" type="number" /><br />
+                <label>Bathrooms</label>
+                <input name="bathroom" type="number" />
+                <label>Bedrooms</label>
+                <input name="bedroom" type="number" /><br />
+                <label>Type</label>
+                <select name="houseType">
+                    <option value="1">Detached</option>
+                    <option value="2">Attached</option>
+                </select><br />
+                <input type="submit" value="Seach for Properties" />
+            </form>
+        </div>
+    </div>
+    <div>
+        <div style="display : flex; flex-direction : column ">
+            <h4>Listings</h4>
+            <div style="overflow : scroll; height: 60vh">
+                @{if (Model != null)
+                    {
+                        if (Model.Count() != 0)
+                        {
+                            foreach (var x in Model)
+                            {
+                                <div style="border: 1px solid black; padding: 10px">
+                                    <h4><b>@x.Price</b></h4>
+                                    <h5>@x.StreetNumber @x.StreetName @x.Province @x.PostalCode</h5>
+                                    <h6>@x.BedroomNum *bedroom-icon @x.BathroomNum *bathroom-icon</h6>
+                                    <button><a asp-controller="Home" asp-action="ListingDetail" asp-route-id="@x.HouseId">Detail</a></button>
+                                </div>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 10; i++)
+                        {
+                            <div style="border: 1px solid black; padding: 10px">
+                                <h4><b>Price</b></h4>
+                                <h5>address</h5>
+                                <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
+                                <button><a asp-controller="Home" asp-action="ListingDetail">Detail</a></button>
+                            </div>
+                        }
+                    }
                 }
-            }
-        }
-    }
-<div style="display:flex">
-    <div style="border: 1px solid black; padding: 10px">
-        <h4><b>Price</b></h4>
-        <h5>address</h5>
-        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
-        <button><a asp-controller="Home" asp-action="ListingDetail">Detail</a></button>
-    </div>
-    <div style="border: 1px solid black; padding: 10px">
-        <h4><b>Price</b></h4>
-        <h5>address</h5>
-        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
-        <button><a asp-controller="Home" asp-action="ListingDetail">Detail</a></button>
-    </div>
-    <div style="border: 1px solid black; padding: 10px">
-        <h4><b>Price</b></h4>
-        <h5>address</h5>
-        <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
-        <button><a asp-controller="Home" asp-action="ListingDetail">Detail</a></button>
-    </div>
+            </div>
+           
+        </div>
 </div>
-
 
 <script>
     document.getElementById("default").click();
