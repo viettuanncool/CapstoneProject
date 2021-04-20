@@ -16,7 +16,7 @@
         </div>
 
         <div id="Area" class="tabcontent">
-            <form method="get" asp-controller="home" asp-action="ListingMap">
+            <form method="get" asp-controller="Listing" asp-action="ListingMap">
                 <label>Enter city, postal</label>
                 <input type="text" name="input" /><br />
                 <label>Min Price</label>
@@ -50,7 +50,7 @@
                                     <h4><b>@x.Price</b></h4>
                                     <h5>@x.StreetNumber @x.StreetName @x.Province @x.PostalCode</h5>
                                     <h6>@x.BedroomNum *bedroom-icon @x.BathroomNum *bathroom-icon</h6>
-                                    <button><a asp-controller="Home" asp-action="ListingDetail" asp-route-id="@x.HouseId">Detail</a></button>
+                                    <button><a asp-controller="Listing" asp-action="ListingDetail" asp-route-id="@x.HouseId">Detail</a></button>
                                 </div>
                             }
                         }
@@ -63,7 +63,7 @@
                                 <h4><b>Price</b></h4>
                                 <h5>address</h5>
                                 <h6>*bedrooms *bedroom-icon *bathrooms *bathroom-icon</h6>
-                                <button><a asp-controller="Home" asp-action="ListingDetail">Detail</a></button>
+                                <button><a asp-controller="Listing" asp-action="ListingDetail">Detail</a></button>
                             </div>
                         }
                     }
